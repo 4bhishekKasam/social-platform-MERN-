@@ -3,6 +3,8 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 var cors = require("cors");
 
+const users = require("./routes/users");
+
 require("./config/db");
 
 const app = express();
@@ -16,7 +18,7 @@ app.use(passport.initialize());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: "true" }));
 
-//app.use('/api',)
+app.use("/api/users", users);
 
 app.listen(port, () => {
   console.log("connected to localhost port:" + port);
