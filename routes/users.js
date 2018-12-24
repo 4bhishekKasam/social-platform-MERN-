@@ -6,11 +6,11 @@ const jwt = require("jsonwebtoken");
 const keys = require("../config/keys");
 const passport = require("passport");
 //load input validation
-const validateRegisterInput = require('../validation/register')
+const validateRegisterInput = require("../validation/register");
 //user model
 const User = require("../models/User");
 
-router.get("/test", (req, res) => res.json({ msg: "route works" }));
+router.get("/test", (req, res) => res.json({ msg: "user route works" }));
 
 //post - api/users/register
 router.post("/register", (req, res) => {
@@ -33,9 +33,10 @@ router.post("/register", (req, res) => {
       const newUser = new User({
         name: req.body.name,
         email: req.body.email,
-        avatar,
-        password: req.body.password
+        password: req.body.password,
+        avatar: req.body.avatar
       });
+
 
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {
@@ -50,6 +51,5 @@ router.post("/register", (req, res) => {
     }
   });
 });
-
 
 module.exports = router;
