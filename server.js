@@ -4,6 +4,7 @@ const passport = require("passport");
 var cors = require("cors");
 
 const users = require("./routes/users");
+const profile = require("./routes/profile");
 
 require("./config/db");
 
@@ -19,6 +20,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: "true" }));
 
 app.use("/api/users", users);
+app.use("/api/profile", profile);
 
 // Server static assets if in production
 // if (process.env.NODE_ENV === "production") {
