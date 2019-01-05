@@ -18,20 +18,22 @@ class Register extends Component {
     };
   }
 
-  componentDidCatch() {
-    if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/dashboard");
-    }
-  }
+  //   componentDidCatch() {
+  //     if (this.props.auth.isAuthenticated) {
+  //       this.props.history.push("/dashboard");
+  //     }
+  //   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors });
-    }
-  }
+  //   componentWillReceiveProps(nextProps) {
+  //     if (nextProps.errors) {
+  //       this.setState({ errors: nextProps.errors });
+  //     }
+  //   }
 
   onChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({ [e.target.name]: e.target.value }, () =>
+      console.log(this.state)
+    );
   };
 
   onSubmit = e => {
@@ -103,12 +105,12 @@ class Register extends Component {
 
 Register.propTypes = {
   registerUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
+ // auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth,
+  // auth: state.auth,
   errors: state.errors
 });
 
