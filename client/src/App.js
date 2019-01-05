@@ -3,10 +3,15 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import { Provider } from "react-redux";
 
-import Landing from './components/layout/Landing';
-import Register from './components/auth/Register';
+import Landing from "./components/layout/Landing";
+import Register from "./components/auth/Register";
+import Login from "./components/auth/Login";
 import store from "./store";
 import "./App.css";
+
+
+
+
 
 class App extends Component {
   render() {
@@ -16,7 +21,8 @@ class App extends Component {
           <div className="App">
             <Route exact path="/" component={Landing} />
             <div className="container">
-            <Route exact path="/register" component={Register} />
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/login" component={Login} />
             </div>
           </div>
         </Router>
