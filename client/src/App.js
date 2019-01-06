@@ -7,11 +7,31 @@ import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import store from "./store";
+import { setCurrentUser, logoutUser } from "./actions/authActions";
+import { clearCurrentProfile } from "./actions/profileActions";
 import "./App.css";
+import setAuthToken from "./utils/setAuthToken";
 
+//check for token
+if (localStorage.jwtToken) {
+  //set auth token header auth
+  setAuthToken(localStorage.jwtToken);
+  //decode token and get user info and exp
+  const decoded = jwt_decode(localStorage.jwtToken);
+  //set user and isAuthenticated
+  store.dispatch(setCurrentUser(decoded));
 
-
-
+  //check for expired token
+  const currentTime = Date.now() / 1000;
+  if (decoded.exp < currentTime) {
+    //logout user
+    store.dispatch(logoutUser());
+    //clear current profile
+    store.dispatch(clearCurrentProfile());
+    //redirect to login
+    window.location.href = "/login";
+  }
+}
 
 class App extends Component {
   render() {
