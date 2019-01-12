@@ -17,6 +17,7 @@ import Posts from "./components/posts/Posts";
 import Post from "./components/post/Post";
 import Profiles from "./components/profiles/Profiles";
 import Profile from './components/profile/Profile';
+import Dashboard from './components/dashboard/Dashboard';
 import NotFound from "./components/not-found/NotFound";
 import store from "./store";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
@@ -58,6 +59,9 @@ class App extends Component {
               <Route exact path="/login" component={Login} />
               <Route exact path="/profiles" component={Profiles} />
               <Route exact path="/profile/:handle" component={Profile} />
+              <Switch>
+                <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              </Switch>
               <Switch>
                 <PrivateRoute
                   exact
