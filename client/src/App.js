@@ -6,14 +6,16 @@ import { Provider } from "react-redux";
 import PrivateRoute from "./components/common/PrivateRoute";
 import Navbar from "./components/layout/Navbar";
 import Landing from "./components/layout/Landing";
-import Footer from './components/layout/Footer';
+import Footer from "./components/layout/Footer";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import CreateProfile from "./components/create-profile/CreateProfile";
 import EditProfile from "./components/edit-profile/EditProfile";
-import AddExperience from './components/add-credentials/AddExperience';
-import AddEducation from './components/add-credentials/AddEducation';
-import NotFound from './components/not-found/NotFound';
+import AddExperience from "./components/add-credentials/AddExperience";
+import AddEducation from "./components/add-credentials/AddEducation";
+import Posts from "./components/posts/Posts";
+import Post from "./components/post/Post";
+import NotFound from "./components/not-found/NotFound";
 import store from "./store";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
 import { clearCurrentProfile } from "./actions/profileActions";
@@ -79,6 +81,15 @@ class App extends Component {
                   path="/add-education"
                   component={AddEducation}
                 />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/feed" component={Posts} />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/post/:id" component={Post} />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/post/:id" component={Post} />
               </Switch>
               <Route exact path="/not-found" component={NotFound} />
             </div>
