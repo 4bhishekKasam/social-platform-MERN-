@@ -15,6 +15,8 @@ import AddExperience from "./components/add-credentials/AddExperience";
 import AddEducation from "./components/add-credentials/AddEducation";
 import Posts from "./components/posts/Posts";
 import Post from "./components/post/Post";
+import Profiles from "./components/profiles/Profiles";
+import Profile from './components/profile/Profile';
 import NotFound from "./components/not-found/NotFound";
 import store from "./store";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
@@ -54,6 +56,8 @@ class App extends Component {
             <div className="container">
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/profiles" component={Profiles} />
+              <Route exact path="/profile/:handle" component={Profile} />
               <Switch>
                 <PrivateRoute
                   exact
@@ -88,9 +92,7 @@ class App extends Component {
               <Switch>
                 <PrivateRoute exact path="/post/:id" component={Post} />
               </Switch>
-              <Switch>
-                <PrivateRoute exact path="/post/:id" component={Post} />
-              </Switch>
+
               <Route exact path="/not-found" component={NotFound} />
             </div>
             <Footer />

@@ -146,7 +146,7 @@ export const addComment = (postId, commentData) => dispatch => {
 
 //delete comment
 export const deleteComment = (postId, commentId) => dispatch => {
-    axios
+  axios
     .delete(`http://localhost:8080/api/posts/comment/${postId}/${commentId}`)
     .then(res =>
       dispatch({
@@ -160,11 +160,4 @@ export const deleteComment = (postId, commentId) => dispatch => {
         payload: err.response.data
       })
     );
-
-
-
-
-
-
-
-}
+};
